@@ -1,10 +1,15 @@
 package projectemployee.springprojectemployee;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import antlr.collections.List;
+//import antlr.collections.List;
 
+import java.util.ArrayList;
 
 @Service 
 public class EmployeeService {
@@ -12,15 +17,28 @@ public class EmployeeService {
 	private EmployeeRepository employeerepository;
 	
 	
+	
+	private ArrayList<EmployeeModule> emp = new ArrayList<>(Arrays.asList(
+			new EmployeeModule("a",1),
+			new EmployeeModule("b",2)
+			
+			));
  	
  	//get list of all Employee
-	public List getAllEmployee()
+	public ArrayList<EmployeeModule> getAllEmployee()
 	{
-	List emp  = (List)employeerepository.findAll();
-	return emp;
+		
+		ArrayList<EmployeeModule> emp= new ArrayList<>();
+		employeerepository.findAll()
+		.forEach(emp::add);
+		return emp;
+//	List emp1  = (List)employeerepository.findAll();
+	     
 	
 	}
 	
+	
+
 	//get employee by id
 	public Object getEmployee(int id)
 	{

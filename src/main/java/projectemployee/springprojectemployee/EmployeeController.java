@@ -1,5 +1,7 @@
 package projectemployee.springprojectemployee;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +21,17 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeservice;
 	
+	@GetMapping("/Hi")
+	public String HI()
+	{
+	return "Hi";
+	}
+	
 	//get all employee data
 	@GetMapping("/employees")
-	public List getAllEmployee()
+	public ArrayList<EmployeeModule> getAllEmployee()
 	{
-		return employeeservice.getAllEmployee();
+		return  employeeservice.getAllEmployee();
 	}
 	
 	//get employee by id 

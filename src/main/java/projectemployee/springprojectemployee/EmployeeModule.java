@@ -1,6 +1,9 @@
 package projectemployee.springprojectemployee;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,8 +12,13 @@ import javax.persistence.Table;
 public class EmployeeModule {
 	
 	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@Column(name="name")
 	private String name;
+	
 	
 	public EmployeeModule() {
 		
@@ -18,18 +26,14 @@ public class EmployeeModule {
 	
 	public EmployeeModule(String name, int id) {
 		super();
-		this.name = name;
 		this.id = id;
-		
+		this.name = name;		
 	}
-
 
 
 	public String getName() {
 		return name;
 	}
-
-
 
 	public void setName(String name) {
 		this.name = name;
@@ -39,8 +43,6 @@ public class EmployeeModule {
 		return id;
 	}
 
-
-
 	public void setEmployeeId(int id) {
 		this.id = id;
 	}
@@ -49,9 +51,5 @@ public class EmployeeModule {
 	public String toString(){
 		return String.format("Employee [id = %d, name = %s, id, name]");
 	}
-
-
-
-	
 
 }
